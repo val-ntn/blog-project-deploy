@@ -16,8 +16,7 @@ services:
   frontend:
     build:
       context: ./frontend-deploy
-      args:
-        VITE_API_BASE_URL: http://backend:5000/api
+
     container_name: frontend-deploy
     ports:
       - "5173:3000"
