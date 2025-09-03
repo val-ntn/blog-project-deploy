@@ -137,7 +137,46 @@ import cloudinary from "../config/cloudinary.js";
 import streamifier from "streamifier";
 
 // Upload picture to Cloudinary
+
 export const uploadPicture = async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+
+  try {
+    const uploadToCloudinary = (fileBuffer) =>
+      new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+          { folder: "blog-project" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        streamifier.createReadStream(fileBuffer).pipe(uploadStream);
+      });
+
+    const result = await uploadToCloudinary(req.file.buffer);
+
+    const imageDoc = new Image({
+      originalName: req.file.originalname,
+      url: result.secure_url,
+      public_id: result.public_id,
+    });
+
+    await imageDoc.save();
+
+    res.json(imageDoc);
+  } catch (err) {
+    console.error("Cloudinary upload error:", err);
+    res.status(500).json({
+      message: "Failed to upload image",
+      error: err.message, // <-- expose actual error for debugging
+    });
+  }
+};
+
+/* export const uploadPicture = async (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: "No file uploaded" });
   }
@@ -168,7 +207,7 @@ export const uploadPicture = async (req, res) => {
     console.error("Cloudinary upload error:", err);
     res.status(500).json({ message: "Failed to upload image" });
   }
-};
+}; */
 
 // List all images not deleted
 export const listPictures = async (req, res) => {
