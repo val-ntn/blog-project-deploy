@@ -9,7 +9,8 @@ export default function Picture({
   mode,
   showCopyButton,
 }) {
-  const imageUrl = `${API_BASE_URL}/uploads/${image.filename}`;
+  //const imageUrl = `${API_BASE_URL}/uploads/${image.filename}`;
+  const imageUrl = image.url;
 
   if (mode === "list") {
     return (

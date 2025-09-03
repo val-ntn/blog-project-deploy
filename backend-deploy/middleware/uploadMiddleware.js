@@ -1,11 +1,11 @@
 //backend/middlware/uploadMiddleware
 
-import multer from "multer";
+/* import multer from "multer";
 import uploadDir from "../config/uploadDir.js";
 import path from "path";
 import fs from "fs";
 
-// Ensure upload directory exists
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
@@ -16,6 +16,34 @@ const storage = multer.diskStorage({
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+  if (allowedTypes.includes(file.mimetype)) {
+    cb(null, true); 
+  } else {
+    cb(
+      new Error("Invalid file type. Only JPG, PNG, GIF and WEBP are allowed.")
+    );
+  }
+};
+
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 20 * 1024 * 1024, 
+  },
+});
+
+export default upload;
+ */
+
+// backend/middleware/uploadMiddleware.js
+import multer from "multer";
+
+// Use memory storage for Cloudinary
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];

@@ -89,7 +89,7 @@ app.get("/", (req, res) => {
   res.send("Hello, this is your blog API!");
 });
 // Serve static files from uploads folder (so images are accessible)
-app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
+//app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/carousels", carouselRoutes);
 

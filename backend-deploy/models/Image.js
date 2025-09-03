@@ -3,13 +3,11 @@
 import mongoose from "mongoose";
 
 const imageSchema = new mongoose.Schema({
-  filename: { type: String, required: true, unique: true }, // saved filename on disk
-  originalName: { type: String }, // original filename from user upload
-  path: { type: String, required: true }, // relative path to /uploads
-  mimetype: { type: String },
-  size: { type: Number },
+  originalName: { type: String },
+  url: { type: String, required: true }, // Cloudinary URL
+  public_id: { type: String, required: true }, // Cloudinary ID for deletion
   uploadedAt: { type: Date, default: Date.now },
-  deleted: { type: Boolean, default: false }, // for soft delete
+  deleted: { type: Boolean, default: false },
 });
 
 const Image = mongoose.model("Image", imageSchema);

@@ -1,6 +1,6 @@
 // frontend/src/components/Images-Carousels/variants/MultiRowCarousel.jsx
 
-import React from "react";
+/* import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
@@ -13,7 +13,7 @@ export default function MultiRowCarousel({ images, title }) {
   }
 
   return (
-    <div style={{width: "100%", maxWidth: "1000px", margin: "2rem auto" }}>
+    <div style={{ width: "100%", maxWidth: "1000px", margin: "2rem auto" }}>
       <Swiper
         modules={[Navigation]}
         navigation
@@ -22,7 +22,7 @@ export default function MultiRowCarousel({ images, title }) {
           300: { slidesPerView: 1 },
           700: { slidesPerView: 2 },
           900: { slidesPerView: 3 },
-          1024:{ slidesPerView: 4 },
+          1024: { slidesPerView: 4 },
         }}
         loop={true}
         style={{ height: "240px" }}
@@ -36,7 +36,52 @@ export default function MultiRowCarousel({ images, title }) {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                /* borderRadius: "8px", */
+              }}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}
+ */
+
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
+export default function MultiRowCarousel({ images, title }) {
+  if (!images || images.length === 0) {
+    return <p>No images for {title}</p>;
+  }
+
+  return (
+    <div style={{ width: "100%", maxWidth: "1000px", margin: "2rem auto" }}>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        spaceBetween={10}
+        breakpoints={{
+          300: { slidesPerView: 1 },
+          700: { slidesPerView: 2 },
+          900: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+        loop={true}
+        style={{ height: "240px" }}
+      >
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={image.url} // <-- Cloudinary URL
+              alt={image.originalName || `Slide ${index + 1}`}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
               }}
             />
           </SwiperSlide>

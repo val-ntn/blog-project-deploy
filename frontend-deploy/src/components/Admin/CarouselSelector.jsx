@@ -12,20 +12,6 @@ export default function CarouselSelector({ onSelect }) {
   const [carousels, setCarousels] = useState([]);
   const [viewMode, setViewMode] = useState("grid");
 
-  /*   useEffect(() => {
-    if (!open) return;
-    axios
-      .get(`${API_BASE_URL}/carousels`, { withCredentials: true })
-      .then((res) => setCarousels(res.data))
-      .catch(console.error);
-  }, [open]);
-
-  const handleSelect = (carousel) => {
-    onSelect(carousel);
-    setOpen(false);
-  };
- */
-
   useEffect(() => {
     if (open) {
       axios
@@ -68,5 +54,5 @@ export default function CarouselSelector({ onSelect }) {
 }
 
 CarouselSelector.propTypes = {
-  onSelect: PropTypes.func.isRequired, // must be a function
+  onSelect: PropTypes.func.isRequired,
 };
