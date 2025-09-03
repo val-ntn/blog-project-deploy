@@ -1,0 +1,177 @@
+/* Import IBM Plex Sans only for this calendar */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+/* === Calendar container === */
+.calendar-container {
+  font-family: 'IBM Plex Sans', sans-serif;
+  max-width: none;
+  width: 100%; 
+  margin: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === Header === */
+.calendar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.weekday {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.month-year {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.month-nav,
+.year-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #1a73e8;
+  border-radius: 50%;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-controls button:hover {
+  background: #1669c1;
+  color: #fff;
+}
+
+
+/* Reset default react-calendar styling */
+.react-calendar {
+  width: 100%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  border: none;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Weekday row */
+.react-calendar__month-view__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  text-transform: uppercase;
+}
+
+/* Day grid */
+.react-calendar__month-view__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/* Individual day tiles */
+.react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px; /* fixed height for square look */
+  padding: 0.25rem;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Hover effect */
+.react-calendar__tile:hover {
+  background: #f0f4ff;
+  color: #1a73e8;
+}
+
+/* Remove red text color from weekend day numbers */
+.react-calendar__month-view__days__day--weekend {
+  color: inherit; /* use same as weekday numbers */
+}
+
+/* Selected day */
+.react-calendar__tile--active {
+  background: transparent !important;
+  border: 1px solid #1a73e8 !important;
+  color: inherit !important;
+  font-weight: 600;
+}
+
+/* Today highlight */
+.react-calendar__tile--now {
+  background: #1a73e8 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  border: none; /* optional, keep clean */
+}
+
+.react-calendar__tile--now.react-calendar__tile--active {
+  background: #1a73e8 !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* === Event tiles (instead of dots) === */
+.event-tile {
+  background: #e8f0fe !important; /* light blue background */
+  border-radius: 8px;
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+/* Make sure active (selected) event tiles stay distinct */
+.react-calendar__tile--active.event-tile {
+  background: #1a73e8 !important;
+  color: var(--color-background) !important;
+  font-weight: 600;
+}
+
+
+/* Event details below calendar */
+.event-details {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  padding: 0 8px;
+}
+
+/* Remove small dots/underlines from weekday labels */
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none !important;
+  border: none !important;
+  /*cursor: default;  optional: prevents "tooltip" cursor */
+}

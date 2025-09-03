@@ -1,0 +1,55 @@
+/* src/components/Reports/Reports.css */
+
+/* Base wrapper */
+.report-item {
+  /* margin: 0 auto; */
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+}
+
+/* ---- Size variations ---- */
+
+
+.report-item--medium {
+        display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg); /* match event medium */
+  background-color: var(--color-background);
+  box-shadow: 
+    0px -30px 16px -30px rgba(0,0,0,0.05),/* top */
+    0px  30px 16px -30px rgba(0,0,0,0.05); /* bottom */
+  border-radius: var(--border-radius-sm);
+  /* margin: 0 auto; */
+}
+.report-item--large {
+  /* max-width: var(--max-content-width); */
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl); /* or var(--spacing-xs) for small if you want */
+  /* margin: 0 auto; */
+}
+
+
+/* ---- Carousel ---- */
+.report-item__carousel {
+  margin-top: var(--spacing-lg);
+}
+
+/* ---- Read More ---- */
+.report-item__read-more {
+  margin-top: var(--spacing-md);
+}
+
+/* ---- Safe HTML content ---- */
+.safe-html p {
+  margin-bottom: calc(var(--spacing-lg) + var(--spacing-md));
+}
+.safe-html::after {
+  content: "";
+  display: block;
+  clear: both;
+}

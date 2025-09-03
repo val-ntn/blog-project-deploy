@@ -1,0 +1,177 @@
+
+/* ---------------------------------------- */
+/* Events.css - BEM-compliant for EventItem */
+/* ---------------------------------------- */
+
+/* -------------------- */
+/* 1. Upcoming Events Container */
+/* -------------------- */
+.upcoming-events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Wrapper for list + calendar */
+.upcoming-events__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* Event list inside upcoming events */
+.upcoming-events__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  text-align: left;
+}
+
+/* Calendar wrapper */
+.upcoming-events__calendar-wrapper {
+  flex: 1;
+  max-width: 400px;    /* constrain width */
+  margin: 0 auto;      /* center it horizontally */
+  width: 100%;         /* still responsive */
+}
+
+/* -------------------- */
+/* 2. Upcoming Events Title & Toggleable */
+/* -------------------- */
+.upcoming-events__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  font-family: var(--font-family-event-title);
+}
+
+.upcoming-events__title--toggleable {
+  cursor: pointer;
+  background: var(--color-background-alt);
+  /*padding: var(--spacing-sm);*/
+  border-radius: var(--border-radius-sm);
+}
+
+/* Remove toggle styles on desktop */
+@media (min-width: 600px) {
+  .upcoming-events__title--toggleable {
+    cursor: default;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+/* Chevron icon rotation */
+.upcoming-events__chevron {
+  transition: transform 0.3s ease;
+}
+.upcoming-events__chevron--rotated {
+  transform: rotate(180deg);
+}
+
+/* -------------------- */
+/* 3. EventItem Card Styling - BEM */
+/* -------------------- */
+.event-item--large {
+  background-color: var(--color-background); /* ensure shadow looks clean */
+padding: var(--spacing-lg); /* or md if you want tighter */
+box-shadow: 
+    0px -30px 16px -30px rgba(0,0,0,0.05),/* top */
+    0px  30px 16px -30px rgba(0,0,0,0.05); /* bottom */
+   
+  /*box-shadow: 0 -2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);*/
+  /*border-top: 1px solid rgba(0,0,0,0.05);*/
+  /*border-bottom: 1px solid rgba(0,0,0,0.05);*/
+}
+
+/* Outer wrapper based on size */
+.event-item--large--wrapper {
+  display: flex;
+  flex-direction: column; /* two-column layout for large events */
+  gap: var(--spacing-md);
+}
+.event-item__body {
+  display: flex;
+  flex-direction: row; /* two-column layout for large events */
+  gap: calc(var(--spacing-xl) * 2);
+}
+
+.event-item--medium--wrapper,
+.event-item--small--wrapper {
+  display: flex;
+  flex-direction: column; /* stacked layout for medium & small */
+  gap: var(--spacing-xs);
+}
+
+/* Columns inside wrapper */
+.event-item__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.event-item__col--main {
+  flex: 2; /* main content wider */
+}
+
+.event-item__col--meta {
+  font-size: var(--font-size-sm);
+  flex: 1; /* extra meta column smaller */
+  gap: 0.5rem;
+}
+
+/* Title, text, date */
+.event-item__title {
+  font-family: var(--font-family-event-title);
+  color: var(--color-body);
+  line-height: 1.2;
+  margin: var(--spacing-md) 0 var(--spacing-md);
+  font-weight: var(--font-weight-normal);
+  text-align: left;
+}
+
+.event-item__title--small { font-size: var(--font-size-base); font-weight: 600; }
+.event-item__title--medium { font-size: var(--font-size-lg); font-weight: 600; }
+.event-item__title--large { font-size: var(--font-size-xl); font-weight: 600; }
+
+.event-item__text {
+  margin-bottom: var(--spacing-sm);
+}
+
+.event-item__date {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+/* Hide text for small events */
+.event-item--small .event-item__text { display: none; }
+
+/* -------------------- */
+/* 4. EventItem Link */
+.event-item__link {
+  display: block;         /* behaves like a div */
+  color: inherit;         /* inherit text color */
+  text-decoration: none;  /* remove underline */
+}
+
+.event-item__link:hover {
+  cursor: pointer;
+  background-color: var(--color-background-alt);
+  border-radius: 0.1rem;
+}
+
+/* -------------------- */
+/* 5. Responsive Layouts */
+/* -------------------- */
+@media (max-width: 900px) {
+
+  .event-item__body {
+    flex-direction: column; /* stack main + meta vertically */
+    gap: var(--spacing-md);
+  /* .event-item--large--wrapper {
+    flex-direction: column; stack columns on smaller screens */
+  }
+}
+
+

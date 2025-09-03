@@ -1,0 +1,67 @@
+/* frontend/src/styles/pages.css */
+/* Page-specific styling for pages */
+
+/* Generic page content wrapper */
+.page-content {
+  padding: 1rem;             /* inner spacing */
+  background-color: var(--color-background);    /* default page background */
+  max-width: var(--max-content-width);
+  margin: 0 auto;             /* center if needed */
+  box-sizing: border-box;
+}
+
+/* Page-specific modifiers */
+.page-content--home {
+  background-color: var(--color-background-dark);
+}
+
+.page-content--calendar {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--news {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--reports {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--event-detail {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--post-detail {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--report-detail {
+  background-color: var(--color-background-alt);
+}
+
+.page-content--unauthorized {
+  background-color: rgb(213, 77, 77);
+}
+
+.page-content--dashboard {
+  background-color: rgb(77, 174, 213);
+}
+
+.page-content--login {
+  background-color: var(--color-background-alt);
+}
+
+
+/* -------------------- */
+/* Page headers (BEM modifier) */
+/* -------------------- */
+/*.header--page {
+  background-color: var(--color-teal-700);
+  color: white;
+  padding: 1rem 2rem;        
+  text-align: right;         
+  border-radius: 0.25rem;    
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-family-event-title);
+  padding-right: var(--spacing-xl);
+}*/

@@ -1,0 +1,147 @@
+/* src/styles/variables.css */
+:root {
+  /* Layout sizes */
+  --max-content-width: 1440px;
+  --grid-gap: 1rem;
+
+  /* =============================
+    Design Tokens / Variables
+   ============================= */
+
+/* Default theme (light mode) */
+  /* === Teal (Accent) === */
+  --color-teal-50:  #f0f6f8;
+  --color-teal-100: #dbe9ed;
+  --color-teal-300: #b1ccd6;
+  --color-teal-500: #8cb8c5; /* base */
+  --color-teal-700: #5f8997;
+  --color-teal-900: #30474f;
+
+  /* === Red (Primary Red) === */
+  --color-red-50:  #f8ecef;
+  --color-red-100: #f1d8de;
+  --color-red-300: #e2a6b7;
+  --color-red-500: #d0839a; /* base */
+  --color-red-700: #a65c73;
+  --color-red-900: #5c323d;
+
+  /* === Soft Red (Secondary Red) === */
+  --color-softred-50:  #fcf6f6;
+  --color-softred-100: #f5e4e4;
+  --color-softred-300: #e6bcbc;
+  --color-softred-500: #ddb1b1; /* base */
+  --color-softred-700: #b38383;
+  --color-softred-900: #5f3c3c;
+
+  /* === Amber (Warning) === */
+  --color-amber-50:  #fef7eb;
+  --color-amber-100: #fbe3b9;
+  --color-amber-300: #f1c278;
+  --color-amber-500: #e7a43b; /* base */
+  --color-amber-700: #a96e1e;
+  --color-amber-900: #4d330a;
+
+  /* === Danger Red === */
+  --color-danger-50:  #fdeaea;
+  --color-danger-100: #f8bcbc;
+  --color-danger-300: #f27676;
+  --color-danger-500: #e72222; /* base */
+  --color-danger-700: #a31414;
+  --color-danger-900: #3d0606;
+
+  /* === Neutral Scale === */
+  --color-white: #fff;
+  --color-neutral-25: #fafafa;
+  --color-neutral-50:  #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #eeeeee;
+  --color-neutral-300: #e0e0e0;
+  --color-neutral-400: #bdbdbd;
+  --color-neutral-500: #9e9e9e;  /* muted text */
+  --color-neutral-600: #757575;
+  --color-neutral-700: #616161;  /* body text */
+  --color-neutral-800: #424242;  /* headings */
+  --color-neutral-900: #212121;  /* almost black */
+
+
+
+
+
+
+
+
+  /* Typography */
+  --font-family-base: "Lato", sans-serif;
+  --font-family-heading: "Playfair Display SC", serif;
+  --font-family-event-title: "Montserrat", sans-serif; 
+  
+--font-size-xxs: 0.625rem; /* 10px */
+--font-size-xs: 0.75rem;   /* 12px → fine for meta/text */
+--font-size-sm: 0.875rem;  /* 14px → body text */
+--font-size-md: 1rem;      /* 16px → default text */
+--font-size-lg: 1.5rem;    /* 24px → headings / medium event titles */
+--font-size-xl: 2rem;      /* 32px → main headings / large event titles */
+--font-size-xxl: 2.25rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Typography: headings */
+  --font-size-h1: 2.5rem; /* ~40px */
+  --font-size-h2: 2rem; /* ~32px */
+  --font-size-h3: 1.5rem; /* ~24px */
+  --font-size-h4: 1.25rem; /* ~20px */
+  --font-size-h5: 1rem; /* ~16px */
+  --font-size-h6: 0.875rem; /* ~14px */
+
+  /* Spacing scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
+
+
+    /* === Semantic Usage === */
+  --color-primary-darker:    var(--color-teal-900);  /* title upcomming events*/
+  --color-primary:    var(--color-teal-700);    /* main brand */
+  --color-secondary: var(--color-softred-500); /* supporting */
+  --color-accent:    var(--color-red-500);   /* teal accent */
+  --color-warning:   var(--color-amber-500);
+  --color-danger:    var(--color-danger-500);
+
+  --color-surface:    var(--color-neutral-100);
+  --color-text:       var(--color-neutral-900);
+  --color-text-light: var(--color-neutral-700);
+  --color-divider:    var(--color-neutral-300);
+  --color-button:     var(--color-primary);
+
+  /* Semantic backgrounds */
+--color-background: var(--color-white);      /* main body background */
+--color-background-alt: var(--color-neutral-25); /* used for content sections/cards */
+--color-background-muted: var(--color-neutral-200); /* for sidebar, hero mockup, widgets */
+}
+
+
+
+
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-background: var(--color-neutral-900);
+  --color-background-alt: var(--color-neutral-900);
+  --color-surface:    var(--color-neutral-800);
+  --color-text:       var(--color-neutral-50);
+  --color-text-light: var(--color-neutral-300);
+  --color-divider:    var(--color-neutral-700);
+  --color-button:     var(--color-primary);
+}

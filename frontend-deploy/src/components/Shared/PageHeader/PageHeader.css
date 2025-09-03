@@ -1,0 +1,38 @@
+/* src/components/Shared/PageHeader.css */
+.page-header {
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--spacing-xl) * 6);
+  align-items: center;
+  background-color: var(--color-primary);
+  border-radius: 0.25rem;
+  gap: calc(var(--spacing-xl) * 4); /* space between spacer and text */
+  padding: 1rem 2rem;     /* match old header padding */
+  height: 80px;           /* explicitly match old height */
+  box-sizing: border-box; /* include padding in height */
+  margin: var(--spacing-md) 0 var(--spacing-md);
+}
+
+.page-header__title {
+    flex: 1;
+  font-size: var(--font-size-h1); 
+  color: white;
+  font-family: var(--font-family-event-title);
+  line-height: 1;                 /* tighten vertical spacing */
+  padding-left: calc(var(--spacing-xl) * 4);
+  text-align: left; /* optional, keep text aligned right */
+}
+
+.page-header__spacer {
+  
+  flex: 2;
+}
+
+/*@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    height: auto;  
+    padding: var(--spacing-md);
+  }
+}*/

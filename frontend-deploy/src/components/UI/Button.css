@@ -1,0 +1,39 @@
+/* frontend/src/components/UI/Button.css */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius-md, 4px);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn--primary {
+  background-color: var(--color-primary, #007bff);
+  color: white;
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary, #6c757d);
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn--delete-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  cursor: pointer;
+  padding: 0;
+}

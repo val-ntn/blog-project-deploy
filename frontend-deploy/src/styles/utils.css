@@ -1,0 +1,236 @@
+/* src/styles/utils.css */
+
+/* -------------------- */
+/* Utility helpers      */
+/* -------------------- */
+.hidden {
+  display: none !important;
+}
+
+/* Detail links (inline, used in meta sections etc.) */
+.detail-link {
+  color: var(--color-primary-darker);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.detail-link:hover,
+.detail-link:focus {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* Titles               */
+/* -------------------- */
+.card__title {
+  font-family: var(--font-family-heading);
+  color: var(--color-body);
+  line-height: 1.2;
+  margin: var(--spacing-md) 0 var(--spacing-md);
+  font-weight: var(--font-weight-normal); /* default bold for normal cards */
+  text-align: left; /* default alignment */
+}
+
+.card__title--small {
+  font-size: var(--font-size-lg); /* same as event-item__title--large */
+  font-weight: 300;
+  margin: var(--spacing-md) 0 var(--spacing-md);
+}
+
+.card__title--medium {
+  font-size: var(--font-size-xl); /* same as event-item__title--large */
+  font-weight: 00;
+  margin: var(--spacing-md) 0 var(--spacing-md);
+}
+
+.card__title--large {
+  font-size: var(--font-size-xxl); /* larger than event-item__title--large */
+  font-weight: 00;
+  margin: var(--spacing-md) 0 var(--spacing-md);
+}
+
+
+.card__title--xl {
+  font-size: var(--font-size-xl);
+}
+.card__title--center {
+  text-align: center;
+}
+
+.card__title--right {
+  text-align: right;
+}
+
+.card__title--left {
+  text-align: left;
+}
+
+
+
+/* -------------------- */
+/* Tagline / Subtitle   */
+/* -------------------- */
+.card__tagline {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--color-button);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* -------------------- */
+/* Date                 */
+/* -------------------- */
+.card__date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+.card__date--center {
+  text-align: center;
+  align-self: center; /* centers only the title */
+}
+/* -------------------- */
+/* Text / Body          */
+/* -------------------- */
+.card__text {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.no-shadow {
+  box-shadow: none !important; /* removes any card or item shadow */
+}
+
+
+/* -------------------- */
+/* Divider              */
+/* -------------------- */
+.card__divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-divider);
+  margin: var(--spacing-md) auto;
+}
+
+/* -------------------- */
+/* "Read more" links    */
+/* -------------------- */
+.card__read-more {
+  display: block;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  margin-top: auto;
+  transition: color 0.2s ease;
+}
+.card__read-more:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* Meta info (author, related, etc.) */
+/* -------------------- */
+.card__meta {
+  display: block;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+/* Meta link hover */
+.card__meta a:hover,
+.card__meta a:focus {
+  text-decoration: underline;
+}
+
+
+.safe-html img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* -------------------- */
+/* Wrapper */
+/* -------------------- */
+
+/* Wrapper for PostItem and ReportItem to control layout */
+.card-item--wrapper {
+  display: flex;
+  flex-direction: column; /* always stacked */
+  gap: var(--spacing-md); /* same as event-item large */
+}
+
+.card-item--small--wrapper,
+.card-item--medium--wrapper,
+.card-item--large--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md); /* or var(--spacing-xs) for small if you want */
+}
+.card-item--large--wrapper {
+  padding: 0 calc(var(--spacing-md) * 4);
+  gap: var(--spacing-xl); /* spacing between items */
+  max-width: 1024px;
+  margin: 0 auto; /* center content */
+}
+
+/* .list-wrapper {
+  padding: 0 calc(var(--spacing-md) * 4);
+  display: flex;
+  flex-direction: column; 
+  gap: var(--spacing-xl)          
+} */
+
+.event-list--wrapper,
+.post-list--wrapper,
+.report-list--wrapper {
+  padding: 0 calc(var(--spacing-md) * 4);
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: var(--spacing-xl); /* spacing between items */
+}
+
+.post-list--wrapper,
+.report-list--wrapper {
+  max-width: 1024px;
+  margin: 0 auto; /* center content */
+}
+.event-list--wrapper {
+  max-width: 1024px;
+  margin: 0 auto; /* center content */
+}
+
+/* Remove horizontal padding on small screens */
+
+@media (max-width: 600px) {
+  .event-list--wrapper,
+.post-list--wrapper,
+.report-list--wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* @media (max-width: 600px) {
+  .list-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+} */
+
+/* Remove horizontal padding on small screens */
+
+@media (max-width: 600px) {
+.card-item--small--wrapper,
+.card-item--medium--wrapper,
+.card-item--large--wrapper  {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

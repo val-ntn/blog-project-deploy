@@ -1,0 +1,96 @@
+/*src/components/Shared/Navbar.css*/
+
+/* --- Base Navbar --- */
+.navbar {
+  font-family: "Lato", sans-serif;
+  padding: 1rem 2rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow like cards */
+  position: relative;
+  z-index: 10;
+}
+
+/* Inner container constrained to max-content-width */
+.navbar__container {
+  max-width: var(--max-content-width, 1280px);
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.navbar__left {
+  display: flex;
+}
+
+.navbar__home {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.navbar__link {
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar__link:hover {
+  color: var(--color-teal-700); /* accent color like your cards */
+}
+
+/* --- Hamburger --- */
+.navbar__hamburger {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar__hamburger:hover {
+  color: var(--color-primary);
+}
+
+/* --- Responsive styles --- */
+@media (max-width: 600px) {
+  .navbar__links {
+    display: none;
+    position: absolute;
+    top: 100%; /* directly under navbar */
+    right: 1rem;
+    background-color: var(--color-background);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .navbar__links--open {
+    display: flex;
+  }
+
+  .navbar__hamburger {
+    display: block;
+  }
+}
