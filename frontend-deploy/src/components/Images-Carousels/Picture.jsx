@@ -1,7 +1,5 @@
 // frontend/src/components/Images-Carousels/Picture.jsx
 
-import { API_BASE_URL } from "../../utils/api";
-
 export default function Picture({
   image,
   onSelect,
@@ -22,9 +20,7 @@ export default function Picture({
         <td>{imageUrl}</td>
         <td>
           {onSelect && <button onClick={() => onSelect(imageUrl)}>👁</button>}
-          {onDelete && (
-            <button onClick={() => onDelete(image.filename)}>❌</button>
-          )}
+          {onDelete && <button onClick={() => onDelete(image._id)}>❌</button>}
         </td>
       </tr>
     );
@@ -39,7 +35,7 @@ export default function Picture({
       />
       {onDelete && (
         <button
-          onClick={() => onDelete(image.filename)}
+          onClick={() => onDelete(image._id)}
           style={{
             position: "absolute",
             top: 0,

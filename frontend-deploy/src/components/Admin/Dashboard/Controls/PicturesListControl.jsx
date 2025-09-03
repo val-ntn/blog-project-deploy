@@ -45,7 +45,7 @@ export default function PicturesListControl() {
 
   const handleDelete = async (imageName) => {
     try {
-      await axios.delete(`${API_BASE_URL}/upload/images/${imageName}`, {
+      await axios.delete(`${API_BASE_URL}/upload/images/${id}`, {
         withCredentials: true,
       });
       fetchImages();
@@ -72,7 +72,7 @@ export default function PicturesListControl() {
         images={images}
         uploading={uploading}
         onUpload={handleUpload}
-        onDelete={handleDelete}
+        onDelete={(id) => handleDelete(id)}
         viewMode={viewMode} // 👈 Pass it in
       />
     </div>

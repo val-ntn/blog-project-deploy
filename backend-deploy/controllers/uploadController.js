@@ -157,9 +157,14 @@ export const uploadPicture = async (req, res) => {
       });
 
     const result = await uploadToCloudinary(req.file.buffer);
+    const uniqueFilename = `${Date.now()}-${req.file.originalname}`;
 
     const imageDoc = new Image({
+      filename: uniqueFilename,
       originalName: req.file.originalname,
+      path: "", // empty for Cloudinary
+      mimetype: req.file.mimetype,
+      size: req.file.size,
       url: result.secure_url,
       public_id: result.public_id,
     });
@@ -224,7 +229,26 @@ export const listPictures = async (req, res) => {
 };
 
 // Soft delete image
+
+// Soft delete by ID
 export const deletePicture = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const image = await Image.findById(id);
+    if (!image) return res.status(404).json({ message: "Image not found" });
+
+    image.deleted = true;
+    await image.save();
+
+    res.json({ message: "Image soft deleted" });
+  } catch (err) {
+    console.error("Error soft deleting image:", err);
+    res.status(500).json({ message: "Failed to delete image" });
+  }
+};
+
+/* export const deletePicture = async (req, res) => {
   const { imageName } = req.params;
 
   try {
@@ -239,7 +263,7 @@ export const deletePicture = async (req, res) => {
     console.error("Error soft deleting image:", err);
     res.status(500).json({ message: "Failed to delete image" });
   }
-};
+}; */
 
 // List deleted images
 export const listDeletedPictures = async (req, res) => {
@@ -256,7 +280,25 @@ export const listDeletedPictures = async (req, res) => {
 };
 
 // Restore soft-deleted image
+
 export const restorePicture = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const image = await Image.findOne({ _id: id, deleted: true });
+    if (!image)
+      return res.status(404).json({ message: "Deleted image not found" });
+
+    image.deleted = false;
+    await image.save();
+
+    res.json({ message: "Image restored" });
+  } catch (err) {
+    console.error("Error restoring image:", err);
+    res.status(500).json({ message: "Failed to restore image" });
+  }
+};
+/* export const restorePicture = async (req, res) => {
   const { imageName } = req.params;
 
   try {
@@ -275,21 +317,21 @@ export const restorePicture = async (req, res) => {
     console.error("Error restoring image:", err);
     res.status(500).json({ message: "Failed to restore image" });
   }
-};
+}; */
 
 // Hard delete image from Cloudinary and MongoDB
 export const hardDeletePicture = async (req, res) => {
-  const { imageName } = req.params;
+  const { id } = req.params;
 
   try {
-    const image = await Image.findOne({ originalName: imageName });
+    const image = await Image.findById(id);
     if (!image) return res.status(404).json({ message: "Image not found" });
 
     // Delete from Cloudinary
     await cloudinary.uploader.destroy(image.public_id);
 
     // Remove from MongoDB
-    await Image.deleteOne({ originalName: imageName });
+    await Image.deleteOne({ _id: id });
 
     res.json({ message: "Image permanently deleted" });
   } catch (err) {

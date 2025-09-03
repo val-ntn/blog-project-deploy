@@ -1,4 +1,5 @@
 // frontend/src/components/admin/ImageSelector.jsx
+// frontend/src/components/admin/ImageSelector.jsx
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -24,6 +25,17 @@ export default function ImageSelector({ onSelect }) {
   const handleSelect = (url) => {
     onSelect(url);
     setOpen(false);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${API_BASE_URL}/upload/images/${id}`, {
+        withCredentials: true,
+      });
+      setImages(images.filter((img) => img._id !== id));
+    } catch (err) {
+      console.error("Delete failed", err);
+    }
   };
 
   return (
@@ -59,6 +71,7 @@ export default function ImageSelector({ onSelect }) {
           <PicturesList
             images={images}
             onSelect={handleSelect}
+            onDelete={handleDelete}
             viewMode={viewMode}
             showCopyButton
           />

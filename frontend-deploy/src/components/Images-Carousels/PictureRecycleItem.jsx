@@ -1,9 +1,7 @@
 // frontend/src/components/Images-Carousels/PictureRecycleItem.jsx
 
-import { API_BASE_URL } from "../../utils/api";
-
 export default function PictureRecycleItem({ image, onRestore, onDelete }) {
-  const imageUrl = `${API_BASE_URL}/uploads/${image.filename}`;
+  const imageUrl = image.url; // Cloudinary URL
 
   return (
     <div className="picture-recycle-item">
@@ -14,8 +12,8 @@ export default function PictureRecycleItem({ image, onRestore, onDelete }) {
         width={100}
       />
       <div>
-        <button onClick={() => onRestore(image.filename)}>Restore</button>
-        <button onClick={() => onDelete(image.filename)}>🗑 Delete</button>
+        <button onClick={() => onRestore(image._id)}>Restore</button>
+        <button onClick={() => onDelete(image._id)}>🗑 Delete</button>
       </div>
     </div>
   );

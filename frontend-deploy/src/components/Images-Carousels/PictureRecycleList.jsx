@@ -1,5 +1,7 @@
 // frontend/src/components/Images-Carousels/PictureRecycleList.jsx
 
+// frontend/src/components/Images-Carousels/PictureRecycleList.jsx
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PictureRecycleItem from "./PictureRecycleItem";
@@ -15,29 +17,37 @@ export default function PictureRecycleList({ onRestore, refreshFlag }) {
       .catch(console.error);
   }, [refreshFlag]);
 
-  const handleRestore = async (filename) => {
-    await axios.patch(
-      `${API_BASE_URL}/upload/images/restore/${filename}`,
-      {},
-      { withCredentials: true }
-    );
-    setImages(images.filter((img) => img.filename !== filename));
+  const handleRestore = async (id) => {
+    try {
+      await axios.patch(
+        `${API_BASE_URL}/upload/images/restore/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      setImages(images.filter((img) => img._id !== id)); // ✅ use _id
 
-    if (onRestore) onRestore();
+      if (onRestore) onRestore();
+    } catch (err) {
+      console.error("Restore failed:", err);
+    }
   };
 
-  const handlePermanentDelete = async (filename) => {
-    const confirm = window.confirm(
+  const handlePermanentDelete = async (id) => {
+    const confirmDelete = window.confirm(
       "Are you sure you want to permanently delete this image? This cannot be undone."
     );
-    if (!confirm) return;
+    if (!confirmDelete) return;
 
-    await axios.delete(`${API_BASE_URL}/upload/images/hard/${filename}`, {
-      withCredentials: true,
-    });
-    setImages(images.filter((img) => img.filename !== filename));
+    try {
+      await axios.delete(`${API_BASE_URL}/upload/images/hard/${id}`, {
+        withCredentials: true,
+      });
+      setImages(images.filter((img) => img._id !== id)); // ✅ consistent
 
-    if (onRestore) onRestore();
+      if (onRestore) onRestore();
+    } catch (err) {
+      console.error("Permanent delete failed:", err);
+    }
   };
 
   return (
@@ -48,8 +58,8 @@ export default function PictureRecycleList({ onRestore, refreshFlag }) {
         <PictureRecycleItem
           key={image._id}
           image={image}
-          onRestore={handleRestore}
-          onDelete={handlePermanentDelete}
+          onRestore={() => handleRestore(image._id)}
+          onDelete={() => handlePermanentDelete(image._id)}
         />
       ))}
     </div>

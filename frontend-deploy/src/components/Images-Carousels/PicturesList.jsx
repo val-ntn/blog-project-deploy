@@ -1,6 +1,5 @@
 // frontend/src/components/Images-Carousels/PictureList.jsx
 
-import { API_BASE_URL } from "../../utils/api";
 import Picture from "./Picture";
 
 export default function PicturesList({
@@ -44,7 +43,7 @@ export default function PicturesList({
           {images.map((image) => (
             <Picture
               //key={image.name}
-              key={image.filename}
+              key={image._id}
               image={image}
               onSelect={onSelect}
               onDelete={onDelete}

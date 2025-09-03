@@ -45,6 +45,8 @@ export default router; */
 
 // backend/routes/upload.js
 
+// backend/routes/upload.js
+
 import express from "express";
 import { verifyToken, requireRole } from "../middleware/authMiddleware.js";
 import uploadMiddleware from "../middleware/uploadMiddleware.js";
@@ -67,7 +69,6 @@ router.post(
   verifyToken,
   requireRole("admin"),
   (req, res, next) => {
-    // Multer memory storage
     uploadMiddleware.single("image")(req, res, (err) => {
       if (err) {
         console.error("Multer error:", err);
@@ -88,12 +89,12 @@ router.get("/images/bin", listDeletedPictures); // Soft-deleted images
 // -----------------------------
 // Restore soft-deleted image
 // -----------------------------
-router.patch("/images/restore/:imageName", restorePicture);
+router.patch("/images/restore/:id", restorePicture);
 
 // -----------------------------
 // Delete images
 // -----------------------------
-router.delete("/images/:imageName", deletePicture); // Soft delete
-router.delete("/images/hard/:imageName", hardDeletePicture); // Hard delete
+router.delete("/images/:id", deletePicture); // Soft delete by ID
+router.delete("/images/hard/:id", hardDeletePicture); // Hard delete by ID
 
 export default router;
