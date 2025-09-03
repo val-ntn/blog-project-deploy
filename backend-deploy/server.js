@@ -54,7 +54,7 @@ app.use(cookieParser());
 // Enable CORS for all origins (adjust in production for security)
 app.use(
   cors({
-    origin: ["https://blog-frontend-deploy.onrender.com"], // your React frontend URL
+    origin: "https://frontend-deploy-obth.onrender.com", // your React frontend URL
     credentials: true, // allow cookies with cross-origin requests
   })
 );
